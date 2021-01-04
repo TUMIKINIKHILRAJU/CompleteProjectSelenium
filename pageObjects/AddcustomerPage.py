@@ -3,8 +3,8 @@ from selenium.webdriver.support.ui import Select
 
 class AddCustomer:
     # Add customer Page
-    lnkCustomers_menu_xpath = "//a[@href='#']//span[contains(text(),'Customers')]"
-    lnkCustomers_menuitem_xpath = "//span[@class='menu-item-title'][contains(text(),'Customers')]"
+    #lnkCustomers_menu_xpath = "//a[@href='#']//span[contains(text(),'Customers')]"
+    #lnkCustomers_menuitem_xpath = "//span[@class='menu-item-title'][contains(text(),'Customers')]"
     btnAddnew_xpath = "//a[@class='btn bg-blue']"
     txtEmail_xpath = "//input[@id='Email']"
     txtPassword_xpath = "//input[@id='Password']"
@@ -28,10 +28,13 @@ class AddCustomer:
         self.driver = driver
 
     def clickOnCustomersMenu(self):
-        self.driver.find_element_by_xpath(self.lnkCustomers_menu_xpath).click()
+        self.lnkCustomers_menu_xpath = self.driver.find_element_by_xpath("//a[@href='#']//span[contains(text(),'Customers')]")
+        self.driver.execute_script("arguments[0].click();", self.lnkCustomers_menu_xpath)
+
 
     def clickOnCustomersMenuItem(self):
-        self.driver.find_element_by_xpath(self.lnkCustomers_menuitem_xpath).click()
+        self.lnkCustomers_menuitem_xpath=self.driver.find_element_by_xpath("//span[@class='menu-item-title'][contains(text(),'Customers')]")
+        self.driver.execute_script("arguments[0].click();", self.lnkCustomers_menuitem_xpath)
 
     def clickOnAddnew(self):
         self.driver.find_element_by_xpath(self.btnAddnew_xpath).click()
