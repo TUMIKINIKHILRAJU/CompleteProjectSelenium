@@ -35,14 +35,14 @@ class Test_003_AddCustomer:
         self.addcust.setPassword("test123")
         self.addcust.setGender("Male")
         self.addcust.setFirstName("nikhil")
-        self.addcust.setLastName("Kumar")
+        self.addcust.setLastName("raju")
         self.addcust.setDob("7/05/1985")  # Format: D / MM / YYY
         self.addcust.setCompanyName("QA")
         self.addcust.setAdminContent("This is for testing.........")
         self.addcust.clickOnSave()
 
 
-        self.msg = self.driver.find_element_by_tag_name("body").text
+        self.msg = self.driver.find_element_by_xpath("/html/body/div[3]/div[1]/div[1]").text
 
         print(self.msg)
         if 'customer has been added successfully.' in self.msg:

@@ -1,10 +1,10 @@
 
 import configparser
-
 config=configparser.RawConfigParser()
-config.read(".\\Configurations\\config.ini")
+config.read("C://Users//user//PycharmProjects//Complete Project//Configurations//config.ini")
 
 class ReadConfig:
+
     @staticmethod
     def getApplicationURL():
         url=config.get('common info','baseURL')

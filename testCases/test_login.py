@@ -3,7 +3,6 @@ from selenium import webdriver
 from pageObjects.LoginPage import LoginPage
 from utilities.readProperties import ReadConfig
 
-
 class Test_001_Login:
     baseURL = ReadConfig.getApplicationURL()
     username = ReadConfig.getUseremail()
@@ -35,6 +34,7 @@ class Test_001_Login:
         self.lp.clickLogin()
         act_title=self.driver.title
         if act_title=="Dashboard / nopCommerce administration":
+            self.lp.clickLogout()
             self.driver.close()
             assert True
         else:

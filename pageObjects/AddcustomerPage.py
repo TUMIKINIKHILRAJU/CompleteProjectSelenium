@@ -3,12 +3,12 @@ from selenium.webdriver.support.ui import Select
 
 class AddCustomer:
     # Add customer Page
-    #lnkCustomers_menu_xpath = "//a[@href='#']//span[contains(text(),'Customers')]"
-    #lnkCustomers_menuitem_xpath = "//span[@class='menu-item-title'][contains(text(),'Customers')]"
-    btnAddnew_xpath = "//a[@class='btn bg-blue']"
+    lnkCustomers_menu_xpath = "/html/body/div[3]/aside/div/div[4]/div/div/nav/ul/li[4]/a"
+    lnkCustomers_menuitem_xpath = "/html/body/div[3]/aside/div/div[4]/div/div/nav/ul/li[4]/ul/li[1]/a/p[text()=' Customers']"
+    btnAddnew_xpath = "//a[@class='btn btn-primary']"
     txtEmail_xpath = "//input[@id='Email']"
     txtPassword_xpath = "//input[@id='Password']"
-    txtcustomerRoles_xpath = "(//div[@class='k-multiselect-wrap k-floatwrap'])[1]"
+    txtcustomerRoles_xpath = "(//div[@class='k-multiselect-wrap k-floatwrap'])[2]"
     lstitemAdministrators_xpath = "//li[contains(text(),'Administrators')]"
     lstitemRegistered_xpath = "//li[contains(text(),'Registered')]"
     lstitemGuests_xpath = "//li[contains(text(),'Guests')]"
@@ -28,12 +28,11 @@ class AddCustomer:
         self.driver = driver
 
     def clickOnCustomersMenu(self):
-        self.lnkCustomers_menu_xpath = self.driver.find_element_by_xpath("//a[@href='#']//span[contains(text(),'Customers')]")
+        self.lnkCustomers_menu_xpath = self.driver.find_element_by_xpath(self.lnkCustomers_menu_xpath)
         self.driver.execute_script("arguments[0].click();", self.lnkCustomers_menu_xpath)
 
-
     def clickOnCustomersMenuItem(self):
-        self.lnkCustomers_menuitem_xpath=self.driver.find_element_by_xpath("//span[@class='menu-item-title'][contains(text(),'Customers')]")
+        self.lnkCustomers_menuitem_xpath=self.driver.find_element_by_xpath(self.lnkCustomers_menuitem_xpath)
         self.driver.execute_script("arguments[0].click();", self.lnkCustomers_menuitem_xpath)
 
     def clickOnAddnew(self):

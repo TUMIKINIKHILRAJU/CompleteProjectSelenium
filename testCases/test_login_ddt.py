@@ -1,4 +1,5 @@
 import pytest
+from selenium import webdriver
 from pageObjects.LoginPage import LoginPage
 from utilities.readProperties import ReadConfig
 from utilities import XLUtils
@@ -7,7 +8,7 @@ import time
 
 class Test_002_DDT_Login():
     baseURL = ReadConfig.getApplicationURL()
-    path = ".//TestData/LoginData.xlsx"
+    path = "C://Users//user//PycharmProjects//Complete Project//TestData/LoginData.xlsx"
 
 
     @pytest.mark.regression
@@ -23,7 +24,6 @@ class Test_002_DDT_Login():
             self.user=XLUtils.readData(self.path,'Sheet1',r,1)
             self.password = XLUtils.readData(self.path, 'Sheet1', r, 2)
             self.exp = XLUtils.readData(self.path, 'Sheet1', r, 3)
-
             self.lp.setUserName(self.user)
             self.lp.setPassword(self.password)
             self.lp.clickLogin()
