@@ -11,6 +11,7 @@ class Test_003_AddCustomer:
     username = ReadConfig.getUseremail()
     password = ReadConfig.getPassword()
 
+
     @pytest.mark.sanity
     @pytest.mark.regression
     def test_addCustomer(self,setup):
@@ -18,16 +19,14 @@ class Test_003_AddCustomer:
         self.driver.get(self.baseURL)
         self.driver.maximize_window()
         self.lp = LoginPage(self.driver)
-        self.lp.setUserName(self.username)
         self.lp.setPassword(self.password)
         self.lp.clickLogin()
 
         self.addcust = AddCustomer(self.driver)
         self.addcust.clickOnCustomersMenu()
         self.addcust.clickOnCustomersMenuItem()
-
+        time.sleep(2)
         self.addcust.clickOnAddnew()
-
 
         self.email = random_generator() + "@gmail.com"
         self.addcust.setEmail(self.email)
@@ -51,7 +50,6 @@ class Test_003_AddCustomer:
             assert False
 
         self.driver.close()
-
 
 def random_generator(size=8, chars=string.ascii_lowercase + string.digits):
     return ''.join(random.choice(chars) for x in range(size))
