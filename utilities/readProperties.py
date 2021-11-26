@@ -1,7 +1,7 @@
 
 import configparser
 config=configparser.RawConfigParser()
-config.read("C://Users//user//PycharmProjects//Complete Project//Configurations//config.ini")
+config.read("C://Users//admin//PycharmProjects//Complete Project//Configurations//config.ini")
 
 class ReadConfig:
 
