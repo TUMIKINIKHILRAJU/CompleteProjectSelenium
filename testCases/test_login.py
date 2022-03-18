@@ -3,6 +3,7 @@ from selenium import webdriver
 from pageObjects.LoginPage import LoginPage
 from utilities.readProperties import ReadConfig
 
+
 class Test_001_Login:
 
     baseURL = ReadConfig.getApplicationURL()
@@ -12,6 +13,8 @@ class Test_001_Login:
 
     @pytest.mark.regression
     def test_homePageTitle(self,setup):
+        #driver=webdriver.Chrome("C://chrome.exe")
+        #driver.get("url")
         self.driver = setup
         self.driver.get(self.baseURL)
         act_title=self.driver.title
@@ -20,7 +23,7 @@ class Test_001_Login:
             self.driver.close()
             assert True
         else:
-            self.driver.save_screenshot(".\\Screenshots\\"+"test_homePageTitle.png")
+            self.driver.save_screenshot(".\\Screenshots\\test_homePageTitle.png")
             self.driver.close()
             assert False
 
@@ -29,6 +32,7 @@ class Test_001_Login:
     def test_login(self,setup):
         self.driver = setup
         self.driver.get(self.baseURL)
+        self.driver.implicitly_wait(20)
         self.lp=LoginPage(self.driver)
         self.lp.setUserName(self.username)
         self.lp.setPassword(self.password)

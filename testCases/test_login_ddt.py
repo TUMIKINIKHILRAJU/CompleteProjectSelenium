@@ -8,7 +8,7 @@ import time
 
 class Test_002_DDT_Login():
     baseURL = ReadConfig.getApplicationURL()
-    path = "C://Users//user//PycharmProjects//Complete Project//TestData/LoginData.xlsx"
+    path = "E://PycharmProjects//Complete Project//TestData/LoginData.xlsx"
 
 
     @pytest.mark.regression
@@ -17,6 +17,7 @@ class Test_002_DDT_Login():
         self.driver.get(self.baseURL)
         self.driver.maximize_window()
         self.lp = LoginPage(self.driver)
+
         self.rows = XLUtils.getRowCount(self.path, 'Sheet1')
         print('Number of rows...',self.rows)
         lst_status=[]
@@ -27,13 +28,14 @@ class Test_002_DDT_Login():
             self.lp.setUserName(self.user)
             self.lp.setPassword(self.password)
             self.lp.clickLogin()
-            time.sleep(5)
+            time.sleep(20)
 
             act_title=self.driver.title
             exp_title="Dashboard / nopCommerce administration"
 
             if act_title==exp_title:
                 if self.exp=='Pass':
+                    time.sleep(20)
                     self.lp.clickLogout();
                     lst_status.append("Pass")
                 elif self.exp=='Fail':

@@ -18,10 +18,12 @@ class Test_003_AddCustomer:
         self.driver=setup
         self.driver.get(self.baseURL)
         self.driver.maximize_window()
+        self.driver.implicitly_wait(5)
         self.lp = LoginPage(self.driver)
+        self.lp.setUserName(self.username)
         self.lp.setPassword(self.password)
         self.lp.clickLogin()
-
+        time.sleep(15)
         self.addcust = AddCustomer(self.driver)
         self.addcust.clickOnCustomersMenu()
         self.addcust.clickOnCustomersMenuItem()
